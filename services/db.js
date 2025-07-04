@@ -27,9 +27,24 @@ CREATE TABLE IF NOT EXISTS experiences (
 );
 `;
 
+const createEducationTable = `
+CREATE TABLE IF NOT EXISTS education (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  profileId INTEGER NOT NULL,
+  institution TEXT NOT NULL,
+  degree TEXT NOT NULL,
+  field TEXT,
+  startDate TEXT NOT NULL,
+  endDate TEXT,
+  description TEXT,
+  FOREIGN KEY(profileId) REFERENCES profiles(id) ON DELETE CASCADE
+);
+`;
+
 db.serialize(() => {
   db.run(createProfilesTable);
   db.run(createExperiencesTable);
+  db.run(createEducationTable);
 });
 
 module.exports = db;

@@ -15,6 +15,9 @@ module.exports = {
       const ExperienceService = require('../services/ExperienceService');
       return ExperienceService.listByProfile(parent.id);
     },
-    education: () => [],
+    education: async (parent) => {
+      const EducationService = require('../services/EducationService');
+      return EducationService.listByProfile(parent.id);
+    },
   }
 };

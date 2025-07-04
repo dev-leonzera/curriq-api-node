@@ -30,7 +30,7 @@ Acesse o playground em: [http://localhost:4000/graphql](http://localhost:4000/gr
 - `/schemas` — tipos e inputs GraphQL dos domínios principais:
   - `Profile`, `Experience`, `Education`, `Vacancy`, `Resume`, `Application`
 - `/resolvers` — resolvers modulares para queries e mutations de cada domínio
-- `/services` — serviços de acesso a dados e regras de negócio (ex: ProfileService, ExperienceService)
+- `/services` — serviços de acesso a dados e regras de negócio (ex: ProfileService, ExperienceService, EducationService)
 - Cada domínio possui seu próprio arquivo de schema, resolver e service, facilitando manutenção e expansão.
 
 ## Scripts úteis
@@ -53,6 +53,25 @@ mutation {
     id
     title
     company
+  }
+}
+```
+
+## Exemplo de uso: Education
+
+```graphql
+mutation {
+  addEducation(profileId: 1, input: {
+    institution: "Universidade Y"
+    degree: "Bacharelado"
+    field: "Ciência da Computação"
+    startDate: "2018-01-01"
+    endDate: "2022-01-01"
+    description: "Formação superior completa"
+  }) {
+    id
+    institution
+    degree
   }
 }
 ```
