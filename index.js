@@ -7,7 +7,9 @@ const app = express();
 
 // Schemas e resolvers modulares
 const typeDefs = require('./schemas');
-const resolvers = {}; // Resolvers serão implementados nas próximas etapas
+const resolversArray = require('./resolvers');
+const { mergeResolvers } = require('@graphql-tools/merge');
+const resolvers = mergeResolvers(resolversArray);
 
 async function startServer() {
   const server = new ApolloServer({ typeDefs, resolvers });

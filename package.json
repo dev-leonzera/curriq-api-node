@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dev-leonzera/curriq-api-node#readme",
   "dependencies": {
+    "@graphql-tools/merge": "^9.0.24",
     "apollo-server-express": "^3.13.0",
     "dotenv": "^17.0.1",
     "express": "^4.21.2",

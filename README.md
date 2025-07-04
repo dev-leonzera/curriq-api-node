@@ -25,11 +25,12 @@ Acesse o playground em: [http://localhost:4000/graphql](http://localhost:4000/gr
 ## Estrutura Modular
 - `/schemas` — tipos e inputs GraphQL dos domínios principais:
   - `Profile`, `Experience`, `Education`, `Vacancy`, `Resume`, `Application`
-- Cada domínio possui seu próprio arquivo de schema, facilitando manutenção e expansão.
+- `/resolvers` — resolvers modulares para queries e mutations de cada domínio
+- Cada domínio possui seu próprio arquivo de schema e resolver, facilitando manutenção e expansão.
 
 ## Scripts úteis
 - `npm start` — inicia o servidor
-- `npx run dev` — hot reload
+- `npm run dev` — hot reload
 - `npx eslint .` — lint
 
 ---
