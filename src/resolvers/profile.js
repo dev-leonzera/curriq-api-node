@@ -1,4 +1,4 @@
-const ProfileService = require('../src/services/ProfileServiceice');
+const ProfileService = require('../services/ProfileService');
 
 module.exports = {
   Query: {

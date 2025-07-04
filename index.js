@@ -6,8 +6,8 @@ const app = express();
 
 
 // Schemas e resolvers modulares
-const typeDefs = require('./schemas');
-const resolversArray = require('./resolvers');
+const typeDefs = require('./src/schemas');
+const resolversArray = require('./src/resolvers');
 const { mergeResolvers } = require('@graphql-tools/merge');
 const resolvers = mergeResolvers(resolversArray);
 
