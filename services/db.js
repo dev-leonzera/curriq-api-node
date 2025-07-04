@@ -51,11 +51,23 @@ CREATE TABLE IF NOT EXISTS vacancies (
 );
 `;
 
+const createApplicationsTable = `
+CREATE TABLE IF NOT EXISTS applications (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  resumeId INTEGER NOT NULL,
+  vacancyId INTEGER NOT NULL,
+  status TEXT NOT NULL,
+  createdAt TEXT NOT NULL,
+  updatedAt TEXT NOT NULL
+);
+`;
+
 db.serialize(() => {
   db.run(createProfilesTable);
   db.run(createExperiencesTable);
   db.run(createEducationTable);
   db.run(createVacanciesTable);
+  db.run(createApplicationsTable);
 });
 
 module.exports = db;
