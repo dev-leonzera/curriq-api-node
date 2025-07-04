@@ -11,7 +11,7 @@ API GraphQL para geração de currículos personalizados baseada em perfis e vag
 2. Copie o arquivo `.env.example` para `.env` e ajuste as variáveis.
 3. Inicie o servidor em modo desenvolvimento:
    ```bash
-   npx nodemon index.js
+   npm run dev
    ```
 
 Acesse o playground em: [http://localhost:4000/graphql](http://localhost:4000/graphql)
@@ -22,9 +22,14 @@ Acesse o playground em: [http://localhost:4000/graphql](http://localhost:4000/gr
 - Apollo Server (GraphQL)
 - SQLite (SQL puro, sem ORM)
 
+## Estrutura Modular
+- `/schemas` — tipos e inputs GraphQL dos domínios principais:
+  - `Profile`, `Experience`, `Education`, `Vacancy`, `Resume`, `Application`
+- Cada domínio possui seu próprio arquivo de schema, facilitando manutenção e expansão.
+
 ## Scripts úteis
 - `npm start` — inicia o servidor
-- `node --wtach index.js` — hot reload
+- `npx run dev` — hot reload
 - `npx eslint .` — lint
 
 ---

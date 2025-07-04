@@ -4,9 +4,10 @@ const { ApolloServer } = require('apollo-server-express');
 
 const app = express();
 
-// Placeholder para schemas e resolvers
-const typeDefs = `type Query { _: Boolean }`;
-const resolvers = { Query: { _: () => true } };
+
+// Schemas e resolvers modulares
+const typeDefs = require('./schemas');
+const resolvers = {}; // Resolvers serão implementados nas próximas etapas
 
 async function startServer() {
   const server = new ApolloServer({ typeDefs, resolvers });
