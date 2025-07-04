@@ -41,10 +41,21 @@ CREATE TABLE IF NOT EXISTS education (
 );
 `;
 
+const createVacanciesTable = `
+CREATE TABLE IF NOT EXISTS vacancies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  requirements TEXT NOT NULL,
+  createdAt TEXT NOT NULL
+);
+`;
+
 db.serialize(() => {
   db.run(createProfilesTable);
   db.run(createExperiencesTable);
   db.run(createEducationTable);
+  db.run(createVacanciesTable);
 });
 
 module.exports = db;
