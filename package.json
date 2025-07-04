@@ -1,0 +1,39 @@
+{
+  "name": "curriq-api-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-leonzera/curriq-api-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-leonzera/curriq-api-node/issues"
+  },
+  "homepage": "https://github.com/dev-leonzera/curriq-api-node#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "dotenv": "^17.0.1",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "nodemon": "^3.1.10"
+  }
+}
