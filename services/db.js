@@ -62,12 +62,26 @@ CREATE TABLE IF NOT EXISTS applications (
 );
 `;
 
+const createResumesTable = `
+CREATE TABLE IF NOT EXISTS resumes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  profileId INTEGER NOT NULL,
+  vacancyId INTEGER,
+  contentHtml TEXT NOT NULL,
+  downloadUrl TEXT,
+  createdAt TEXT NOT NULL,
+  FOREIGN KEY(profileId) REFERENCES profiles(id) ON DELETE CASCADE,
+  FOREIGN KEY(vacancyId) REFERENCES vacancies(id) ON DELETE SET NULL
+);
+`;
+
 db.serialize(() => {
   db.run(createProfilesTable);
   db.run(createExperiencesTable);
   db.run(createEducationTable);
   db.run(createVacanciesTable);
   db.run(createApplicationsTable);
+  db.run(createResumesTable);
 });
 
 module.exports = db;
