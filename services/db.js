@@ -14,8 +14,22 @@ CREATE TABLE IF NOT EXISTS profiles (
 );
 `;
 
+const createExperiencesTable = `
+CREATE TABLE IF NOT EXISTS experiences (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  profileId INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  company TEXT NOT NULL,
+  startDate TEXT NOT NULL,
+  endDate TEXT,
+  description TEXT,
+  FOREIGN KEY(profileId) REFERENCES profiles(id) ON DELETE CASCADE
+);
+`;
+
 db.serialize(() => {
   db.run(createProfilesTable);
+  db.run(createExperiencesTable);
 });
 
 module.exports = db;

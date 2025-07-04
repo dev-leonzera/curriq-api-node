@@ -11,7 +11,10 @@ module.exports = {
     deleteProfile: async (_, { id }) => ProfileService.delete(id),
   },
   Profile: {
-    experiences: () => [],
+    experiences: async (parent) => {
+      const ExperienceService = require('../services/ExperienceService');
+      return ExperienceService.listByProfile(parent.id);
+    },
     education: () => [],
   }
 };
