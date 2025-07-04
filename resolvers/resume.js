@@ -7,10 +7,15 @@ module.exports = {
   },
   Mutation: {
     generateResume: async (_, { input }) => {
-      // Geração real será implementada depois; aqui apenas mocka um HTML
-      const { profileId, vacancyId } = input;
-      const contentHtml = `<h1>Currículo gerado para profile ${profileId}</h1>`;
-      return ResumeService.create({ profileId, vacancyId, contentHtml });
+      const ResumeGeneratorService = require('../services/ResumeGeneratorService');
+      const { profile, vacancy, contentHtml } = await ResumeGeneratorService.generate(input);
+      // Salva no banco
+      const resume = await ResumeService.create({
+        profileId: profile.id,
+        vacancyId: vacancy ? vacancy.id : null,
+        contentHtml
+      });
+      return resume;
     },
     deleteResume: async (_, { id }) => ResumeService.delete(id),
     downloadResume: async () => '', // Implementação futura

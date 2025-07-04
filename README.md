@@ -30,7 +30,7 @@ Acesse o playground em: [http://localhost:4000/graphql](http://localhost:4000/gr
 - `/schemas` — tipos e inputs GraphQL dos domínios principais:
   - `Profile`, `Experience`, `Education`, `Vacancy`, `Resume`, `Application`
 - `/resolvers` — resolvers modulares para queries e mutations de cada domínio
-- `/services` — serviços de acesso a dados e regras de negócio (ex: ProfileService, ExperienceService, EducationService, VacancyService, ApplicationService, ResumeService)
+- `/services` — serviços de acesso a dados e regras de negócio (ex: ProfileService, ExperienceService, EducationService, VacancyService, ApplicationService, ResumeService, ResumeGeneratorService)
 - Cada domínio possui seu próprio arquivo de schema, resolver e service, facilitando manutenção e expansão.
 
 ## Scripts úteis
@@ -39,78 +39,11 @@ Acesse o playground em: [http://localhost:4000/graphql](http://localhost:4000/gr
 - `npx eslint .` — lint
 - `node seed.js` — popula o banco com dados de exemplo
 
-## Exemplo de uso: Experience
+## Geração Inteligente de Currículo
 
-```graphql
-mutation {
-  addExperience(profileId: 1, input: {
-    title: "Desenvolvedor Backend"
-    company: "Empresa X"
-    startDate: "2022-01-01"
-    endDate: "2023-01-01"
-    description: "Atuação em projetos Node.js e GraphQL"
-  }) {
-    id
-    title
-    company
-  }
-}
-```
+A mutation `generateResume` faz análise semântica da vaga, cruza palavras-chave com o perfil e prioriza experiências/habilidades relevantes. O currículo é gerado em HTML e salvo no banco.
 
-## Exemplo de uso: Education
-
-```graphql
-mutation {
-  addEducation(profileId: 1, input: {
-    institution: "Universidade Y"
-    degree: "Bacharelado"
-    field: "Ciência da Computação"
-    startDate: "2018-01-01"
-    endDate: "2022-01-01"
-    description: "Formação superior completa"
-  }) {
-    id
-    institution
-    degree
-  }
-}
-```
-
-## Exemplo de uso: Vacancy
-
-```graphql
-mutation {
-  createVacancy(input: {
-    title: "Desenvolvedor Fullstack"
-    description: "Vaga para atuar com Node.js e React."
-    requirements: ["Node.js", "React", "GraphQL"]
-  }) {
-    id
-    title
-    requirements
-    createdAt
-  }
-}
-```
-
-## Exemplo de uso: Application
-
-```graphql
-mutation {
-  createApplication(resumeId: 1, vacancyId: 1) {
-    id
-    status
-    createdAt
-  }
-  updateApplicationStatus(id: 1, status: "accepted") {
-    id
-    status
-    updatedAt
-  }
-}
-```
-
-## Exemplo de uso: Resume
+### Exemplo:
 
 ```graphql
 mutation {
