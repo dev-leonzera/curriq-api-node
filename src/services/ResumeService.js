@@ -1,4 +1,4 @@
-const db = require('./db');
+const db = require('../../services/db');
 
 const ResumeService = {
   async create({ profileId, vacancyId, contentHtml, downloadUrl }) {

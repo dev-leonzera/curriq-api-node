@@ -1,4 +1,4 @@
-const ProfileService = require('./ProfileService');
+const ProfileService = require('../../services/ProfileService');
 const ExperienceService = require('./ExperienceService');
 const EducationService = require('./EducationService');
 const VacancyService = require('./VacancyService');

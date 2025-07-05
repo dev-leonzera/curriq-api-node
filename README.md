@@ -27,11 +27,16 @@ Acesse o playground em: [http://localhost:4000/graphql](http://localhost:4000/gr
 - SQLite (SQL puro, sem ORM)
 
 ## Estrutura Modular
-- `/schemas` — tipos e inputs GraphQL dos domínios principais:
-  - `Profile`, `Experience`, `Education`, `Vacancy`, `Resume`, `Application`
-- `/resolvers` — resolvers modulares para queries e mutations de cada domínio
-- `/services` — serviços de acesso a dados e regras de negócio (ex: ProfileService, ExperienceService, EducationService, VacancyService, ApplicationService, ResumeService, ResumeGeneratorService)
-- Cada domínio possui seu próprio arquivo de schema, resolver e service, facilitando manutenção e expansão.
+- `/src/schemas` — tipos e inputs GraphQL dos domínios principais
+- `/src/resolvers` — resolvers modulares para queries e mutations de cada domínio
+- `/src/services` — serviços de acesso a dados e regras de negócio
+- `/src/dtos` — DTOs (Data Transfer Objects) para validação e padronização de dados entre camadas
+- Cada domínio possui seu próprio arquivo de schema, resolver, service e DTO, facilitando manutenção e expansão.
+
+## Camada DTO (Data Transfer Object)
+- Todos os dados de entrada e saída dos resolvers passam por DTOs, que centralizam validação, transformação e padronização.
+- Exemplo: `ProfileDTO`, `ExperienceDTO`, `EducationDTO`, `VacancyDTO`, `ResumeDTO`, `ApplicationDTO`.
+- Isso garante contratos claros, facilita testes e desacopla regras de validação do restante da lógica.
 
 ## Scripts úteis
 - `npm start` — inicia o servidor
